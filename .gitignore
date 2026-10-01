@@ -1,0 +1,62 @@
+# SQLI-HAILAMDEV .gitignore
+
+# Build artifacts
+/bin/
+/build/
+/dist/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Tests and coverage
+*.test
+coverage.out
+coverage.html
+
+# Runtime output
+/output/
+/reports/
+/cache/
+/logs/
+
+# Sessions
+session_*.json
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+/config/production.yaml
+/config/*.local.yaml
+
+# Local tooling
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Certificates
+certs/
+*.pem
+*.key
+*.crt
+
+# Temporary
+tmp/
+temp/
+*.tmp
+
+# Dependencies
+vendor/
+
+# UDF binaries (compiled)
+signatures/udf_bin/*.so
+signatures/udf_bin/*.dll
+signatures/udf_bin/*.dylib
+
+# Profiles
+*.prof
+*.pprof

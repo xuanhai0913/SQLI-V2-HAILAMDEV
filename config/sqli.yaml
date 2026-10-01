@@ -1,0 +1,53 @@
+# Cấu hình SQLI
+
+engine:
+  threads: 10
+  timeout: 30
+  retries: 3
+  delay: 0
+  jitter: 0.1
+  user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+  follow_redirects: true
+  max_redirects: 10
+  proxy: ""
+  tor_proxy: ""
+
+detector:
+  dbms_detection: true
+  waf_detection: true
+  technique_priority: ["union", "error", "time", "blind", "stacked"]
+  confirmation_threshold: 0.95
+  false_positive_check: true
+
+tamper:
+  enabled: true
+  chain: []
+  waf_specific: "auto"
+  custom_scripts: []
+
+exfil:
+  method: "auto"  # auto|union|blind|time|error|stacked|oob
+  batch_size: 50
+  concurrency: 5
+  dns_domain: ""
+  http_endpoint: ""
+  chunk_size: 1000
+
+post_exploit:
+  udf_path: "./signatures/udf_bin/"
+  shell_type: "interactive"  # interactive|oneshot|reverse
+  persistence: ["trigger", "event", "udf_autoload"]
+  destruct_mode: "none"  # none|drop|truncate|corrupt|encrypt
+  encrypt_key: ""
+
+reporting:
+  output_dir: "./output"
+  formats: ["json", "csv", "parquet", "sql"]
+  compress: true
+  include_proof: true
+
+signatures:
+  payloads_dir: "./signatures/payloads/"
+  udf_source_dir: "./signatures/udf_source/"
+  udf_bin_dir: "./signatures/udf_bin/"
+  auto_update: false
